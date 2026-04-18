@@ -5,13 +5,17 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include <thread>
-#include <chrono>
 
-// ─── Utility: brief pause for atmosphere ──────────────────
-static void pause(int ms = 800) {
-    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-}
+#ifdef _WIN32
+    #include <windows.h>
+    static void pause(int ms = 800) { Sleep(ms); }
+#else
+    #include <thread>
+    #include <chrono>
+    static void pause(int ms = 800) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+    }
+#endif
 
 // ─── Constructor ──────────────────────────────────────────
 GameEngine::GameEngine()
