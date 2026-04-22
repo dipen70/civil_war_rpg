@@ -23,7 +23,7 @@ int main() {
     // POLYMORPHISM: one base-class pointer holds either derived
     // object. Calls to introduce() / playScenario() dispatch to
     // the correct override at runtime.
-    std::unique_ptr<Character> player;
+    std::unique_ptr<Character> player; 
     if (choice == 1)
         player = std::make_unique<Spy>("Thomas Harrison", "Elias Webb");
     else
